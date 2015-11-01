@@ -17,7 +17,7 @@ import org.bukkit.scheduler.BukkitScheduler;
 public class Main
   extends JavaPlugin
 {
-  public static String v = "2.1.0";
+  public static String v = "2.1.1";
   
   public void onDisable()
   {
@@ -41,7 +41,7 @@ public class Main
       file.delete();
       saveDefaultConfig();
     }
-    getServer().getScheduler().runTaskTimerAsynchronously(this, new Runnable()
+    getServer().getScheduler().runTaskTimer(this, new Runnable()
     {
       public int countdowntime = Main.this.getConfig()
         .getInt("announcement-delay");
