@@ -1,6 +1,7 @@
 name: VotingLinks
-main: me.tehkitti.VoteLinks.VoteLinks
-version: 1.0.0
+main: me.tehkitti.VotingLinks.Main
+version: 2.0.0
+author: TehKitti
 commands:
     vlabout:
         description: Shows information about the VotingLinks plugin.
@@ -8,3 +9,10 @@ commands:
     vote:
         description: Shows voting links.
         usage: /vote
+permissions:
+    votinglinks.vote:
+        description: Lets you vote, granted by default to everybody.
+        default: true
+    votinglinks.about:
+        description: Lets you see plugin information
+        default: op
