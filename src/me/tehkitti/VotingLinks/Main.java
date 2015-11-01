@@ -11,13 +11,15 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.FileConfigurationOptions;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
 public class Main
   extends JavaPlugin
 {
-  public static String v = "2.1.1";
+  public static String v = "2.2.0";
+  public static Main instance;
   
   public void onDisable()
   {
@@ -26,9 +28,12 @@ public class Main
   
   public void onEnable()
   {
+    instance = this;
     pluginInfo("of VotingLinks Enabled!");
     getConfig().options().copyDefaults(true);
     saveConfig();
+    getServer().getPluginManager()
+      .registerEvents(new AListener(this), this);
     if (getConfig().getInt("dont-ever-change-this") != 1)
     {
       ConsoleCommandSender console = getServer().getConsoleSender();
@@ -41,29 +46,29 @@ public class Main
       file.delete();
       saveDefaultConfig();
     }
-    getServer().getScheduler().runTaskTimer(this, new Runnable()
-    {
-      public int countdowntime = Main.this.getConfig()
-        .getInt("announcement-delay");
-      
-      public void run()
+    if (getConfig().getBoolean("enable-announcements")) {
+      getServer().getScheduler().runTaskTimer(this, new Runnable()
       {
-        if (this.countdowntime != 1)
+        public int countdowntime = Main.this.getConfig()
+          .getInt("announcement-delay");
+        
+        public void run()
         {
-          this.countdowntime -= 1;
+          if (this.countdowntime != 1)
+          {
+            this.countdowntime -= 1;
+          }
+          else
+          {
+            Bukkit.broadcastMessage(
+              ChatColor.translateAlternateColorCodes('&', 
+              Main.this.getConfig().getString("reminder")));
+            this.countdowntime = Main.this.getConfig().getInt(
+              "announcement-delay");
+          }
         }
-        else
-        {
-          Bukkit.broadcastMessage(
-            ChatColor.translateAlternateColorCodes(
-            '&', 
-            Main.this.getConfig().getString(
-            "reminder")));
-          this.countdowntime = Main.this.getConfig().getInt(
-            "announcement-delay");
-        }
-      }
-    }, 0L, 20L);
+      }, 0L, 20L);
+    }
   }
   
   public static void pluginInfo(String message)
@@ -73,14 +78,14 @@ public class Main
   
   public boolean onCommand(CommandSender sender, Command cmd, String commandlabel, String[] args)
   {
+    ConsoleCommandSender console = getServer().getConsoleSender();
     if (commandlabel.equalsIgnoreCase("vote"))
     {
-      ConsoleCommandSender console = getServer().getConsoleSender();
       if ((sender instanceof ConsoleCommandSender))
       {
         console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
           getConfig().getString("thank-you-message")));
-        if (getConfig().getString("link1") != "none") {
+        if (getConfig().getBoolean("enablelink1")) {
           console.sendMessage(ChatColor.translateAlternateColorCodes(
             '&', getConfig().getString("link1")));
         }
@@ -117,64 +122,56 @@ public class Main
             '&', getConfig().getString("link9")));
         }
       }
-      if (((sender instanceof Player)) && 
-        (sender.hasPermission("votinglinks.vote")))
+      if ((sender instanceof Player))
       {
-        sender.sendMessage(ChatColor.translateAlternateColorCodes(
-          '&', getConfig().getString("thank-you-message")));
-        if (getConfig().getBoolean("enablelink1")) {
-          sender.sendMessage(
-            ChatColor.translateAlternateColorCodes('&', getConfig()
-            .getString("link1")));
+        if (sender.hasPermission("votinglinks.vote"))
+        {
+          sender.sendMessage(ChatColor.translateAlternateColorCodes('&', 
+            getConfig().getString("thank-you-message")));
+          if (getConfig().getBoolean("enablelink1")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes(
+              '&', getConfig().getString("link1")));
+          }
+          if (getConfig().getBoolean("enablelink2")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes(
+              '&', getConfig().getString("link2")));
+          }
+          if (getConfig().getBoolean("enablelink3")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes(
+              '&', getConfig().getString("link3")));
+          }
+          if (getConfig().getBoolean("enablelink4")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes(
+              '&', getConfig().getString("link4")));
+          }
+          if (getConfig().getBoolean("enablelink5")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes(
+              '&', getConfig().getString("link5")));
+          }
+          if (getConfig().getBoolean("enablelink6")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes(
+              '&', getConfig().getString("link6")));
+          }
+          if (getConfig().getBoolean("enablelink7")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes(
+              '&', getConfig().getString("link7")));
+          }
+          if (getConfig().getBoolean("enablelink8")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes(
+              '&', getConfig().getString("link8")));
+          }
+          if (getConfig().getBoolean("enablelink9")) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes(
+              '&', getConfig().getString("link9")));
+          }
         }
-        if (getConfig().getBoolean("enablelink2")) {
-          sender.sendMessage(
-            ChatColor.translateAlternateColorCodes('&', getConfig()
-            .getString("link2")));
+        if (!sender.hasPermission("votinglinks.vote")) {
+          sender.sendMessage(ChatColor.RED + "No permission.");
         }
-        if (getConfig().getBoolean("enablelink3")) {
-          sender.sendMessage(
-            ChatColor.translateAlternateColorCodes('&', getConfig()
-            .getString("link3")));
-        }
-        if (getConfig().getBoolean("enablelink4")) {
-          sender.sendMessage(
-            ChatColor.translateAlternateColorCodes('&', getConfig()
-            .getString("link4")));
-        }
-        if (getConfig().getBoolean("enablelink5")) {
-          sender.sendMessage(
-            ChatColor.translateAlternateColorCodes('&', getConfig()
-            .getString("link5")));
-        }
-        if (getConfig().getBoolean("enablelink6")) {
-          sender.sendMessage(
-            ChatColor.translateAlternateColorCodes('&', getConfig()
-            .getString("link6")));
-        }
-        if (getConfig().getBoolean("enablelink7")) {
-          sender.sendMessage(
-            ChatColor.translateAlternateColorCodes('&', getConfig()
-            .getString("link7")));
-        }
-        if (getConfig().getBoolean("enablelink8")) {
-          sender.sendMessage(
-            ChatColor.translateAlternateColorCodes('&', getConfig()
-            .getString("link8")));
-        }
-        if (getConfig().getBoolean("enablelink9")) {
-          sender.sendMessage(
-            ChatColor.translateAlternateColorCodes('&', getConfig()
-            .getString("link9")));
-        }
-      }
-      if (!sender.hasPermission("votinglinks.vote")) {
-        sender.sendMessage(ChatColor.RED + "No permission.");
       }
     }
     if (commandlabel.equalsIgnoreCase("vlabout"))
     {
-      ConsoleCommandSender console = getServer().getConsoleSender();
       if (((sender instanceof Player)) && 
         (sender.hasPermission("votinglinks.about")))
       {

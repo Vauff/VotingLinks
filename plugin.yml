@@ -1,6 +1,6 @@
 name: VotingLinks
 main: me.tehkitti.VotingLinks.Main
-version: 2.1.1
+version: 2.2.0
 author: TehKitti
 commands:
     vlabout:
