@@ -1,0 +1,10 @@
+name: VotingLinks
+main: me.tehkitti.VoteLinks.VoteLinks
+version: 1.0.0
+commands:
+    vlabout:
+        description: Shows information about the VotingLinks plugin.
+        usage: /vlabout
+    vote:
+        description: Shows voting links.
+        usage: /vote

@@ -1,0 +1,14 @@
+# Configuration file for VoteLinks.
+# You don't need to fill all the link options, each one is optional but any ones left empty will cause an empty line.
+# thank-you-message is the message that will show above the vote links. It's recommended to have something there to prevent a random empty line.
+# If you need help don't hesitate to send a ticket or comment on the project page asking for it.
+thank-you-message: Thanks for voting!
+link1: http://planetminecraft.com/example-voting-link
+link2: Add a link here.
+link3: Add a link here.
+link4: Add a link here.
+link5: Add a link here.
+link6: Add a link here.
+link7: Add a link here.
+link8: Add a link here.
+link9: Add a link here.
