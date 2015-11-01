@@ -18,7 +18,7 @@ import org.bukkit.scheduler.BukkitScheduler;
 public class Main
   extends JavaPlugin
 {
-  public static String v = "2.2.0";
+  public static String v = "2.3.0";
   public static Main instance;
   
   public void onDisable()
@@ -126,43 +126,52 @@ public class Main
       {
         if (sender.hasPermission("votinglinks.vote"))
         {
-          sender.sendMessage(ChatColor.translateAlternateColorCodes('&', 
-            getConfig().getString("thank-you-message")));
+          sender.sendMessage(ChatColor.translateAlternateColorCodes(
+            '&', getConfig().getString("thank-you-message")));
           if (getConfig().getBoolean("enablelink1")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes(
-              '&', getConfig().getString("link1")));
+            sender.sendMessage(
+              ChatColor.translateAlternateColorCodes('&', getConfig()
+              .getString("link1")));
           }
           if (getConfig().getBoolean("enablelink2")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes(
-              '&', getConfig().getString("link2")));
+            sender.sendMessage(
+              ChatColor.translateAlternateColorCodes('&', getConfig()
+              .getString("link2")));
           }
           if (getConfig().getBoolean("enablelink3")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes(
-              '&', getConfig().getString("link3")));
+            sender.sendMessage(
+              ChatColor.translateAlternateColorCodes('&', getConfig()
+              .getString("link3")));
           }
           if (getConfig().getBoolean("enablelink4")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes(
-              '&', getConfig().getString("link4")));
+            sender.sendMessage(
+              ChatColor.translateAlternateColorCodes('&', getConfig()
+              .getString("link4")));
           }
           if (getConfig().getBoolean("enablelink5")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes(
-              '&', getConfig().getString("link5")));
+            sender.sendMessage(
+              ChatColor.translateAlternateColorCodes('&', getConfig()
+              .getString("link5")));
           }
           if (getConfig().getBoolean("enablelink6")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes(
-              '&', getConfig().getString("link6")));
+            sender.sendMessage(
+              ChatColor.translateAlternateColorCodes('&', getConfig()
+              .getString("link6")));
           }
           if (getConfig().getBoolean("enablelink7")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes(
-              '&', getConfig().getString("link7")));
+            sender.sendMessage(
+              ChatColor.translateAlternateColorCodes('&', getConfig()
+              .getString("link7")));
           }
           if (getConfig().getBoolean("enablelink8")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes(
-              '&', getConfig().getString("link8")));
+            sender.sendMessage(
+              ChatColor.translateAlternateColorCodes('&', getConfig()
+              .getString("link8")));
           }
           if (getConfig().getBoolean("enablelink9")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes(
-              '&', getConfig().getString("link9")));
+            sender.sendMessage(
+              ChatColor.translateAlternateColorCodes('&', getConfig()
+              .getString("link9")));
           }
         }
         if (!sender.hasPermission("votinglinks.vote")) {
@@ -192,6 +201,27 @@ public class Main
       }
       if (!sender.hasPermission("votinglinks.about")) {
         sender.sendMessage(ChatColor.RED + "No permission.");
+      }
+    }
+    if (commandlabel.equalsIgnoreCase("vlreload"))
+    {
+      if ((sender instanceof ConsoleCommandSender))
+      {
+        reloadConfig();
+        console.sendMessage(ChatColor.AQUA + 
+          "VotingLinks configuration file reloaded successfully.");
+      }
+      if ((sender instanceof Player))
+      {
+        if (sender.hasPermission("votinglinks.reload"))
+        {
+          reloadConfig();
+          sender.sendMessage(ChatColor.AQUA + 
+            "VotingLinks configuration file reloaded successfully.");
+        }
+        if (!sender.hasPermission("votinglinks.about")) {
+          sender.sendMessage(ChatColor.RED + "No permission.");
+        }
       }
     }
     return true;

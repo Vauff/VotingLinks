@@ -1,18 +1,24 @@
 name: VotingLinks
 main: me.tehkitti.VotingLinks.Main
-version: 2.2.0
+version: 2.3.0
 author: TehKitti
 commands:
     vlabout:
-        description: Shows information about the VotingLinks plugin.
+        description: Shows you plugin information.
         usage: /vlabout
     vote:
         description: Shows voting links.
         usage: /vote
+    vlreload:
+        description: Reloads the configuration file.
+        usage: /vlreload
 permissions:
     votinglinks.vote:
-        description: Lets you vote, granted by default to everybody.
+        description: Lets you see voting links, granted by default to everybody.
         default: true
     votinglinks.about:
-        description: Lets you see plugin information
+        description: Lets you see plugin information.
+        default: op
+    votinglinks.reload:
+        description: Lets you reload the configuration file.
         default: op
