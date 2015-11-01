@@ -4,6 +4,7 @@
 # v2.0 now supports using the color codes we all know and love. You can use &5 &b etc for coloring links & the thank you message.
 # If you need help don't hesitate to comment on the project page asking for it.
 # announcement-delay is calculated in seconds, not minutes.
+# The enablelink options are there so if you don't want to use all the links you can disable certain ones to prevent empty lines.
 # And seriously, don't change dont-ever-change-this as it will wipe your configuration.
 dont-ever-change-this: 1
 thank-you-message: '&6Thanks for voting!'
@@ -18,3 +19,12 @@ link6: '&4Add a link here'
 link7: '&9Add a link here'
 link8: '&3Add a link here'
 link9: '&5Add a link here'
+enablelink1: true
+enablelink2: true
+enablelink3: true
+enablelink4: true
+enablelink5: true
+enablelink6: true
+enablelink7: true
+enablelink8: true
+enablelink9: true

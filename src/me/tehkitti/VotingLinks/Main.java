@@ -17,7 +17,7 @@ import org.bukkit.scheduler.BukkitScheduler;
 public class Main
   extends JavaPlugin
 {
-  public static String v = "2.0.0";
+  public static String v = "2.1.0";
   
   public void onDisable()
   {
@@ -80,48 +80,93 @@ public class Main
       {
         console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
           getConfig().getString("thank-you-message")));
-        console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
-          getConfig().getString("link1")));
-        console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
-          getConfig().getString("link2")));
-        console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
-          getConfig().getString("link3")));
-        console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
-          getConfig().getString("link4")));
-        console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
-          getConfig().getString("link5")));
-        console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
-          getConfig().getString("link6")));
-        console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
-          getConfig().getString("link7")));
-        console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
-          getConfig().getString("link8")));
-        console.sendMessage(ChatColor.translateAlternateColorCodes('&', 
-          getConfig().getString("link9")));
+        if (getConfig().getString("link1") != "none") {
+          console.sendMessage(ChatColor.translateAlternateColorCodes(
+            '&', getConfig().getString("link1")));
+        }
+        if (getConfig().getBoolean("enablelink2")) {
+          console.sendMessage(ChatColor.translateAlternateColorCodes(
+            '&', getConfig().getString("link2")));
+        }
+        if (getConfig().getBoolean("enablelink3")) {
+          console.sendMessage(ChatColor.translateAlternateColorCodes(
+            '&', getConfig().getString("link3")));
+        }
+        if (getConfig().getBoolean("enablelink4")) {
+          console.sendMessage(ChatColor.translateAlternateColorCodes(
+            '&', getConfig().getString("link4")));
+        }
+        if (getConfig().getBoolean("enablelink5")) {
+          console.sendMessage(ChatColor.translateAlternateColorCodes(
+            '&', getConfig().getString("link5")));
+        }
+        if (getConfig().getBoolean("enablelink6")) {
+          console.sendMessage(ChatColor.translateAlternateColorCodes(
+            '&', getConfig().getString("link6")));
+        }
+        if (getConfig().getBoolean("enablelink7")) {
+          console.sendMessage(ChatColor.translateAlternateColorCodes(
+            '&', getConfig().getString("link7")));
+        }
+        if (getConfig().getBoolean("enablelink8")) {
+          console.sendMessage(ChatColor.translateAlternateColorCodes(
+            '&', getConfig().getString("link8")));
+        }
+        if (getConfig().getBoolean("enablelink9")) {
+          console.sendMessage(ChatColor.translateAlternateColorCodes(
+            '&', getConfig().getString("link9")));
+        }
       }
       if (((sender instanceof Player)) && 
         (sender.hasPermission("votinglinks.vote")))
       {
         sender.sendMessage(ChatColor.translateAlternateColorCodes(
           '&', getConfig().getString("thank-you-message")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes(
-          '&', getConfig().getString("link1")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes(
-          '&', getConfig().getString("link2")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes(
-          '&', getConfig().getString("link3")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes(
-          '&', getConfig().getString("link4")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes(
-          '&', getConfig().getString("link5")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes(
-          '&', getConfig().getString("link6")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes(
-          '&', getConfig().getString("link7")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes(
-          '&', getConfig().getString("link8")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes(
-          '&', getConfig().getString("link9")));
+        if (getConfig().getBoolean("enablelink1")) {
+          sender.sendMessage(
+            ChatColor.translateAlternateColorCodes('&', getConfig()
+            .getString("link1")));
+        }
+        if (getConfig().getBoolean("enablelink2")) {
+          sender.sendMessage(
+            ChatColor.translateAlternateColorCodes('&', getConfig()
+            .getString("link2")));
+        }
+        if (getConfig().getBoolean("enablelink3")) {
+          sender.sendMessage(
+            ChatColor.translateAlternateColorCodes('&', getConfig()
+            .getString("link3")));
+        }
+        if (getConfig().getBoolean("enablelink4")) {
+          sender.sendMessage(
+            ChatColor.translateAlternateColorCodes('&', getConfig()
+            .getString("link4")));
+        }
+        if (getConfig().getBoolean("enablelink5")) {
+          sender.sendMessage(
+            ChatColor.translateAlternateColorCodes('&', getConfig()
+            .getString("link5")));
+        }
+        if (getConfig().getBoolean("enablelink6")) {
+          sender.sendMessage(
+            ChatColor.translateAlternateColorCodes('&', getConfig()
+            .getString("link6")));
+        }
+        if (getConfig().getBoolean("enablelink7")) {
+          sender.sendMessage(
+            ChatColor.translateAlternateColorCodes('&', getConfig()
+            .getString("link7")));
+        }
+        if (getConfig().getBoolean("enablelink8")) {
+          sender.sendMessage(
+            ChatColor.translateAlternateColorCodes('&', getConfig()
+            .getString("link8")));
+        }
+        if (getConfig().getBoolean("enablelink9")) {
+          sender.sendMessage(
+            ChatColor.translateAlternateColorCodes('&', getConfig()
+            .getString("link9")));
+        }
       }
       if (!sender.hasPermission("votinglinks.vote")) {
         sender.sendMessage(ChatColor.RED + "No permission.");
