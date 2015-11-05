@@ -1,31 +1,15 @@
-# Configuration file for VoteLinks.
-# You don't need to fill all the link options, each one is optional but any ones left empty will cause an empty line.
-# thank-you-message is the message that will show above the vote links. It's recommended to have something there to prevent a random empty line.
-# v2.0 now supports using the color codes we all know and love. You can use &5, &b etc for coloring links & the thank you message.
-# If you need help don't hesitate to comment on the project page asking for it.
-# announcement-delay is calculated in seconds, not minutes.
-# The enablelink options are there so if you don't want to use all the links you can disable certain ones to prevent empty lines.
-# And seriously, don't change dont-ever-change-this as it will wipe your configuration.
-dont-ever-change-this: 1
-enable-announcements: true
-thank-you-message: '&6Thanks for voting!'
-reminder: '&aRemember to vote for us every day using /vote!'
+# Configuration file for VoteLinks
+# announcement-delay is calculated in seconds, not minutes
+# You can add and remove links as you'd like, but keeping under 10 links is ideal if you'd like to fit it on the chat window all at once
+# If you need help don't hesitate to comment on the project page asking for it
+# And seriously, don't change dont-ever-change-this as it will wipe your configuration
+dont-ever-change-this: 2
+announcements: true
 announcement-delay: 900
-link1: '&bAdd a link here'
-link2: '&2Add a link here'
-link3: '&cAdd a link here'
-link4: '&dAdd a link here'
-link5: '&eAdd a link here'
-link6: '&4Add a link here'
-link7: '&9Add a link here'
-link8: '&3Add a link here'
-link9: '&5Add a link here'
-enablelink1: true
-enablelink2: true
-enablelink3: true
-enablelink4: true
-enablelink5: true
-enablelink6: true
-enablelink7: true
-enablelink8: true
-enablelink9: true
+announcement-message: '&aRemember to vote for us every day using /vote!'
+links:
+    - '&6Thanks for voting!'
+    - '&bAdd a link here'
+    - '&2Add a link here'
+    - '&cAdd a link here'
+    - '&dAdd a link here'

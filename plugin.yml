@@ -1,24 +1,24 @@
 name: VotingLinks
-main: me.tehkitti.VotingLinks.Main
-version: 2.3.0
-author: TehKitti
+main: com.vauff.votinglinks.core.Main
+version: 3.0
+author: Vauff
 commands:
     vlabout:
-        description: Shows you plugin information.
+        description: Shows you plugin information
         usage: /vlabout
     vote:
-        description: Shows voting links.
+        description: Shows you voting links
         usage: /vote
     vlreload:
-        description: Reloads the configuration file.
+        description: Reloads the configuration file
         usage: /vlreload
 permissions:
     votinglinks.vote:
-        description: Lets you see voting links, granted by default to everybody.
+        description: Gives permission to the /vote command and vote signs, both show you voting links
         default: true
     votinglinks.about:
-        description: Lets you see plugin information.
-        default: op
+        description: Gives permission to the /vlabout command, shows you plugin information
+        default: true
     votinglinks.reload:
-        description: Lets you reload the configuration file.
+        description: Gives permission to the /vlreload command, reloads the configuration file
         default: op
